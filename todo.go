@@ -6,7 +6,7 @@ import (
 )
 
 type item struct {
-	// Item structrepresents a ToDo item
+	// Item struct represents a ToDo item
 	Task        string
 	Done        bool
 	CreatedAt   time.Time
