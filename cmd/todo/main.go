@@ -3,14 +3,23 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/Pepper-Mint747/goproj/interacting/todo"
 	"os"
+
+	"github.com/Pepper-Mint747/goproj/interacting/todo"
 )
 
 //Hard-coding the file name
 const todoFileName = ".todo.json"
 
 func main() {
+
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(),
+			"%s tool. Developed by @IAmOmoga \n", os.Args[0])
+		fmt.Fprintf(flag.CommandLine.Output(), "Copyright 2022\n")
+		fmt.Fprintln(flag.CommandLine.Output(), "Usage information:")
+		flag.PrintDefaults()
+	}
 
 	//Parsing command line flags
 	task := flag.String("task", "", "Task to be included in the ToDo list")
@@ -31,12 +40,13 @@ func main() {
 	// Decide what to do based on the number of arguments provided
 	switch {
 	case *list:
+		fmt.Print(l)
 		// List current to do items
-		for _, item := range *l {
-			if !item.Done {
-				fmt.Println(item.Task)
-			}
-		}
+		//for _, item := range *l {
+		//	if !item.Done {
+		//		fmt.Println(item.Task)
+		//	}
+		//}
 
 	case *complete > 0:
 		//Complete the given item
